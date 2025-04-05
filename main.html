@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>До начала отпуска</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e5799, #207cca, #2989d8, #7db9e8);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .title {
+            font-size: 3.5vw;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 5vw;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+        
+        .timer-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 12vw;
+        }
+        
+        .timer-value {
+            font-size: 6vw;
+            line-height: 1;
+        }
+        
+        .timer-label {
+            font-size: 1.5vw;
+            margin-top: 10px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 6vw;
+            }
+            
+            .timer {
+                flex-direction: column;
+                font-size: 8vw;
+                gap: 5px;
+            }
+            
+            .timer-block {
+                min-width: auto;
+            }
+            
+            .timer-value {
+                font-size: 10vw;
+            }
+            
+            .timer-label {
+                font-size: 3vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">До начала отпуска осталось</div>
+    <div class="timer">
+        <div class="timer-block">
+            <div class="timer-value" id="days">00</div>
+            <div class="timer-label">дней</div>
+        </div>
+        <div class="timer-block">
+            <div class="timer-value" id="hours">00</div>
+            <div class="timer-label">часов</div>
+        </div>
+        <div class="timer-block">
+            <div class="timer-value" id="minutes">00</div>
+            <div class="timer-label">минут</div>
+        </div>
+        <div class="timer-block">
+            <div class="timer-value" id="seconds">00</div>
+            <div class="timer-label">секунд</div>
+        </div>
+    </div>
+
+    <script>
+        function updateTimer() {
+            const targetDate = new Date('May 13, 2025 00:01:00').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance < 0) {
+                document.querySelector('.title').textContent = 'Ура! Отпуск начался!';
+                document.querySelector('.timer').style.display = 'none';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
