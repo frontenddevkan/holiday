@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1e5799, #207cca, #2989d8, #7db9e8);
+            background: linear-gradient(135deg, #b81cd3, #a80bc4, #95096b, #bf0dbf);
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -56,12 +56,12 @@
         
         @media (max-width: 768px) {
             .title {
-                font-size: 6vw;
+                font-size: 7vw;
             }
             
             .timer {
                 flex-direction: column;
-                font-size: 8vw;
+                font-size: 9vw;
                 gap: 5px;
             }
             
@@ -102,7 +102,7 @@
 
     <script>
         function updateTimer() {
-            const targetDate = new Date('May 13, 2025 00:01:00').getTime();
+            const targetDate = new Date('May 3, 2025 00:01:00').getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
             
