@@ -45,8 +45,7 @@ function createActiveBgElements() {
 
 function initTimers() {
     const TARGET_DATES = {
-        VACATION: new Date('2025-05-03T00:01:00'),
-        BIRTHDAY: new Date('2025-05-01T00:01:00'),
+        VACATION: new Date('2025-08-18T00:01:00'),
         NEW_YEAR: new Date('2025-12-31T00:01:00')
     };
 
